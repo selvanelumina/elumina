@@ -72,9 +72,9 @@ export class DropComponent implements OnInit {
           html += "<style>";
           html += "table {";
           html+="border-collapse: separate;";
-          html+="border-spacing: 0 4px;}";
+          html+="border-spacing: 0 4px; cellpadding: 50}";
           html+="td {";
-          html+=" border:1px solid black; width:500px; padding:1px";
+          html+=" border:1px solid black; width:1500px; padding:1px";
           html+="}";
           html+="</style>";
           html+="</head>";
@@ -84,8 +84,7 @@ export class DropComponent implements OnInit {
 
       for (var i=0; i<this.mainData.length; i++) {
         html+="<table>";
-        html += `<td>${this.mainData[i]}</td>`;
-        // html += "<td><b>X</b></td>";
+        html += `<td>${this.mainData[i]}X</td>`;
         var next = i+1;
         if (next%perrow==0 && next!=this.mainData.length) {
           html += "</tr><tr>";
