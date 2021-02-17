@@ -1,3 +1,4 @@
+import { TargetBinder } from '@angular/compiler';
 import {Component, OnInit} from '@angular/core';
 import {DropEvent} from 'angular-draggable-droppable';
 
@@ -69,21 +70,20 @@ export class DropComponent implements OnInit {
       var perrow = 1, // 1 CELL PER ROW
           html = "<head>";
           html += "<style>";
-
-          html+="table, th, td";
-          html+="{";
-          html+="border: 1px solid black;";
-            
-          html+="border-collapse: collapse;";
+          html += "table {";
+          html+="border-collapse: separate;";
+          html+="border-spacing: 0 4px;}";
+          html+="td {";
+          html+=" border:1px solid black; width:500px; padding:1px";
           html+="}";
           html+="</style>";
           html+="</head>";
           html+="<body>";
-          html += "<table";
-          html+=" class='center'"
+          html+="<table>";
           html+="<tr>";
 
       for (var i=0; i<this.mainData.length; i++) {
+        html+="<table>";
         html += `<td>${this.mainData[i]}</td>`;
         // html += "<td><b>X</b></td>";
         var next = i+1;
