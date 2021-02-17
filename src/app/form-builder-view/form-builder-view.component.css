@@ -1,9 +1,9 @@
 .vertical { 
     border-left: 1px solid black; 
     top: 55px;
-    height: 630px; 
+    height: 93%; 
     position:absolute; 
-    left: 15%; 
+    left: 20%; 
 } 
 
 .min-h_400{
