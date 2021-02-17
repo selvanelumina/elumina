@@ -10,12 +10,18 @@ import { FormBuilderViewModule } from './form-builder-view/form-builder-view.mod
 import { FormRendererModule } from './form-renderer/form-renderer.module';
 import { PreviewModule } from './preview/preview.module';
 import { FormBuilderViewComponent } from './form-builder-view/form-builder-view.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularDraggableModule } from 'angular2-draggable';
+import { DragAndDropModule } from 'angular-draggable-droppable';
+import { DropComponent } from './drop/drop.component';
+import { DragComponent } from './drag/drag.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormBuilderViewComponent
+    FormBuilderViewComponent,
+    DropComponent,
+    DragComponent
   ],
   imports: [
     BrowserModule,
@@ -25,9 +31,22 @@ import { FormBuilderViewComponent } from './form-builder-view/form-builder-view.
     FormAssemblerModule,
     FormBuilderViewModule,
     FormRendererModule,
-    PreviewModule
+    PreviewModule,
+    BrowserAnimationsModule,
+    AngularDraggableModule,
+    DragAndDropModule
   ],
   providers: [],
+
+  exports: [
+    ControlsModule,
+    FormAssemblerModule,
+    FormBuilderViewModule,
+    FormRendererModule,
+    PreviewModule,
+    BrowserAnimationsModule,
+    DragAndDropModule
+  ],
   // bootstrap: [AppComponent]
   bootstrap: [FormBuilderViewComponent]
 })

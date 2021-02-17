@@ -1,0 +1,12 @@
+<div nz-row>
+    <ng-container *ngFor="let item of data; let i = index;">
+        <div nz-col
+             nzSpan="24"
+             mwlDraggable
+             [dropData]="item"
+             class="z10">
+            <button nz-button nzBlock nzSize="small" nzType="dashed">{{item}}</button>
+        </div>
+        <br>
+    </ng-container>
+</div>

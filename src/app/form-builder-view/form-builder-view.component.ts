@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-form-builder-view',
@@ -7,10 +6,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   styleUrls: ['./form-builder-view.component.css']
 })
 export class FormBuilderViewComponent implements OnInit {
+    constructor() {
+    }
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+    ngOnInit(): void {
+    }
 }
