@@ -1,2 +1,2 @@
 # elumina 
-Angular Machine Test
+Angular Machine Test - Drag and Drop using angular plugin draggable and droppable
