@@ -9,8 +9,7 @@ import {DropEvent} from 'angular-draggable-droppable';
 })
 export class DropComponent implements OnInit {
 
-    mainData: any = [];                             // Outer main container
-    // partData: any = [];                             // Inner sub-container
+    mainData: any = [];     
     textbox=0;
     dropdown=0;
     temp=0;
@@ -22,29 +21,11 @@ export class DropComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    /**
-           * Drag and drop the main container to get data
-           * @param data: data
-     */
     onDrop(data: DropEvent<any>) {
         console.log('Main Data', data);
         this.tempData = data;
     }
 
-    /**
-           * Drag and drop the secondary container to get data
-           * @param data: data
-     */
-    // onDropPart(data: DropEvent<any>) {
-    //     console.log('Part Data', data);
-    //     this.tempData = data;
-    // }
-    
-    /**
-           * Drag event monitoring of the main container
-           * @param ev: event
-           * @param desc: description
-     */
     onPointerMain(ev: PointerEvent, desc: string) {
         console.log(desc, ev);
         ev.preventDefault();
@@ -94,22 +75,4 @@ export class DropComponent implements OnInit {
       html+="</body>";
       document.getElementById("container").innerHTML = html;
     }
-    
-    /**
-           * Drag event monitoring of secondary container
-           * @param ev: event
-           * @param desc: description
-     */
-    // onPointerPart(ev: PointerEvent, desc: string) {
-    //     console.log(desc, ev);
-    //     ev.preventDefault();
-    //     ev.stopPropagation();
-    //     setTimeout(_ => {
-    //         if (this.tempData) {
-    //             this.partData.push(this.tempData);
-    //             this.tempData = null;
-    //         }
-    //     });
-    // }
-    
 }
