@@ -84,7 +84,7 @@ export class DropComponent implements OnInit {
 
       for (var i=0; i<this.mainData.length; i++) {
         html+="<table>";
-        html += `<td>${this.mainData[i]}X</td>`;
+        html += `<td>${this.mainData[i]}</td>`;
         var next = i+1;
         if (next%perrow==0 && next!=this.mainData.length) {
           html += "</tr><tr>";
