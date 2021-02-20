@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { AngularDraggableModule } from 'angular2-draggable';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 
 
@@ -9,8 +7,6 @@ import { DragAndDropModule } from 'angular-draggable-droppable';
   declarations: [],
   imports: [
     CommonModule,
-    DragDropModule,
-    AngularDraggableModule,
     DragAndDropModule
   ]
 })

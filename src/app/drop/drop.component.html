@@ -1,4 +1,4 @@
-<div class="h-100 flex"
+<div class="h-100 flex" ng-mousedown="return false;" ng-init="count=0"
      mwlDroppable
      (drop)="onDrop($event)"
      (pointerup)="onPointerMain($event, 'Main Up')">
@@ -6,6 +6,7 @@
     <div class="flex1 ant-alert-success min-h_400 pad_10"
          mwlDroppable
          (drop)="onDrop($event)"
+         (mousedown)="onHostClick($event)"
          (pointerup)="onPointerMain($event, 'Main Up')">
         <div id="container"></div>
     </div>

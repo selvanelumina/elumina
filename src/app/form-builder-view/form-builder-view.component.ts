@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
+// import { DropComponent } from '../drop/drop.component';
 
 @Component({
   selector: 'app-form-builder-view',
@@ -6,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-builder-view.component.css']
 })
 export class FormBuilderViewComponent implements OnInit {
-    constructor() {
-    }
+  preview: boolean = false;
+  @Output() mainData = new EventEmitter<any>();;
+  constructor() {
+  }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+  }
+
+  displayModal() {
+    this.preview = true;
+  }
 }

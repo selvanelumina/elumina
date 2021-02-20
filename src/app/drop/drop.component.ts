@@ -1,5 +1,6 @@
-import { TargetBinder } from '@angular/compiler';
-import {Component, OnInit} from '@angular/core';
+import { StylesCompileDependency } from '@angular/compiler';
+import {Component, OnInit, HostListener} from '@angular/core';
+import { SelectMultipleControlValueAccessor } from '@angular/forms';
 import {DropEvent} from 'angular-draggable-droppable';
 
 @Component({
@@ -14,6 +15,13 @@ export class DropComponent implements OnInit {
     dropdown=0;
     temp=0;
     private tempData: DropEvent<any>;
+
+    @HostListener('mousedown', ['$event'])
+    onHostClick(event: MouseEvent) {
+      alert("Do not click on this region");
+      // event.preventDefault();
+      event.stopPropagation();
+    }
     
     constructor() {
     }
@@ -27,7 +35,7 @@ export class DropComponent implements OnInit {
     }
 
     onPointerMain(ev: PointerEvent, desc: string) {
-        console.log(desc, ev);
+        // console.log(desc, ev);
         ev.preventDefault();
         ev.stopPropagation();
         setTimeout((_: any) => {
@@ -89,4 +97,8 @@ export class DropComponent implements OnInit {
       html+="</body>";
       document.getElementById("container").innerHTML = html;
     }
+
+    delay(ms: number) {
+      return new Promise( resolve => setTimeout(resolve, ms) );
+  }
 }

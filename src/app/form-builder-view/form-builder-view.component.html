@@ -3,6 +3,8 @@
     <br>
     <span style='margin-right:1.25em; display:inline-block;'>&nbsp;</span>
     <span><b>Angular Machine Test B</b></span>
+    <span style='margin-right:83%; display:inline-block;'>&nbsp;</span>
+    <span><button type="button" (click)="displayModal()" data-toggle="modal" data-target="#myModal">Preview</button></span>
     <hr>
     <span class="vertical"></span>
     <br>
@@ -14,13 +16,16 @@
             </div>
         </div>
     </div>
-    <div style = "position:absolute; top:8%;  left:21%; width:78%; height:91%; border: 1px dashed;">
+    <div style = "position:absolute; top:10%;  left:21%; width:78%; height:88%; border: 1px dashed;">
         <div nz-col nzSpan="20">
             <div class="ant-alert-info min-h_400 pad_10">
                 <span style='margin-right:1.25em; display:inline-block;'>&nbsp;</span>
                 <app-drop></app-drop>
             </div>
         </div>
+    </div>
+    <div>
+        <div *ngIf="this.preview==true"><app-preview></app-preview></div>
     </div>
 </div>
 

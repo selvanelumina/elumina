@@ -15,13 +15,15 @@ import { AngularDraggableModule } from 'angular2-draggable';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { DropComponent } from './drop/drop.component';
 import { DragComponent } from './drag/drag.component';
+import { PreviewComponent } from './preview/preview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormBuilderViewComponent,
     DropComponent,
-    DragComponent
+    DragComponent,
+    PreviewComponent
   ],
   imports: [
     BrowserModule,
