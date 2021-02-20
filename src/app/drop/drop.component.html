@@ -2,29 +2,11 @@
      mwlDroppable
      (drop)="onDrop($event)"
      (pointerup)="onPointerMain($event, 'Main Up')">
-     <!-- <pre class="pad_10">{{mainData}}</pre> -->
-
-    <!-- <div class="flex1 pad_r_10">
-        <nz-alert nzType="info" nzMessage="Main please drag to this area"></nz-alert>
-        <pre class="pad_10">{{mainData}}</pre>
-        {{mainData}}
-    </div> -->
 
     <div class="flex1 ant-alert-success min-h_400 pad_10"
          mwlDroppable
          (drop)="onDrop($event)"
          (pointerup)="onPointerMain($event, 'Main Up')">
-        <!-- <nz-alert nzType="success" nzMessage="Part Please drag to this area"></nz-alert> -->
-        <!-- <pre class="pad_10">{{mainData}}</pre> -->
         <div id="container"></div>
     </div>
-
-    <!-- <div class="flex1 ant-alert-success min-h_400 pad_10"
-         mwlDroppable
-         (drop)="onDropPart($event)"
-         (pointerup)="onPointerPart($event, 'Part Up')">
-        <nz-alert nzType="success" nzMessage="Part Please drag to this area"></nz-alert>
-        <pre class="pad_10">Part Data = {{partData | json}}</pre>
-    </div> -->
-
 </div>

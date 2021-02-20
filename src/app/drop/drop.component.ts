@@ -31,31 +31,31 @@ export class DropComponent implements OnInit {
         ev.preventDefault();
         ev.stopPropagation();
         setTimeout((_: any) => {
-            if (this.tempData) {
-                if(this.tempData.dropData == "TextBox"){
-                  this.textbox++;
-                  this.temp = this.textbox;
-                }
-                if(this.tempData.dropData == "DropDown"){
-                  this.dropdown++;
-                  this.temp = this.dropdown;
-                }
-                this.mainData.unshift(this.tempData.dropData + " " + this.temp);
-                this.tempData = null;
-                this.displayTable();
-            }
-        });
+          if (this.tempData) {
+              if(this.tempData.dropData == "TextBox"){
+                this.textbox++;
+                this.temp = this.textbox;
+              }
+              if(this.tempData.dropData == "DropDown"){
+                this.dropdown++;
+                this.temp = this.dropdown;
+
+              }
+              this.mainData.unshift({"name": this.tempData.dropData, "id": this.temp})
+              this.displayTable();
+          }
+      });
     }
     
     displayTable(){
-      var perrow = 1, // 1 CELL PER ROW
+      var perrow = 1, 
           html = "<head>";
           html += "<style>";
           html += "table {";
           html+="border-collapse: separate;";
           html+="border-spacing: 0 4px; cellpadding: 50}";
           html+="td {";
-          html+=" border:1px solid black; width:1500px; padding:1px";
+          html+="border: none;"
           html+="}";
           html+="</style>";
           html+="</head>";
@@ -65,11 +65,25 @@ export class DropComponent implements OnInit {
 
       for (var i=0; i<this.mainData.length; i++) {
         html+="<table>";
-        html += `<td>${this.mainData[i]}</td>`;
-        var next = i+1;
-        if (next%perrow==0 && next!=this.mainData.length) {
-          html += "</tr><tr>";
+        if(this.mainData[i].name == "TextBox"){
+          html+=`<div><input style="width:100%" type="text" placeholder="${this.mainData[i].name}:${this.mainData[i].id}"></input></div>`;
+          var next = i+1;
+          if (next%perrow==0 && next!=this.mainData.length) {
+            html += "</tr><tr>";
+          }
         }
+        if(this.mainData[i].name == "DropDown"){
+          html+='<div><select style="width:100%">';
+          html+='<option>DropDown ';
+          html+= this.mainData[i].id;
+          html+= '</option>';
+          html+='</select></div>';
+          var next = i+1;
+          if (next%perrow==0 && next!=this.mainData.length) {
+            html += "</tr><tr>";
+          }
+        }
+
       }
       html += "</tr></table>"
       html+="</body>";

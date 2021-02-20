@@ -56,3 +56,10 @@ pre{
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+
+
+  .input {
+    size: 100;
+    box-sizing: border-box;
+  } 
+  
