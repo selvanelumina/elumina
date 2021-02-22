@@ -53,7 +53,6 @@ export class DropComponent implements OnInit{
               this.dataModel.name=this.tempData.dropData;
               this.dataModel.id=this.temp;
               Global.mainData.unshift(this.dataModel);
-              // this.mainDataEvent.emit(Global.mainData);
               this.displayTable();
           }
       });

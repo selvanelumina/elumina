@@ -10,9 +10,7 @@ import { Global } from '../global';
 export class PreviewComponent implements OnInit {
   dataModel: DataModel;
   mainDataLocal: DataModel[] = [];
-  //() mainDataLocal: DataModel[];
-  
-  
+    
   constructor(
   ) { 
 ;   this.mainDataLocal = Global.mainData;
