@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { DataModel } from '../data-model.dataModel';
 
 @Component({
     selector: 'app-drag',
@@ -7,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class DragComponent implements OnInit {
     data: any = [];
-
+    dataModel: DataModel;
     constructor() {
         this.data[0] = 'TextBox';
         this.data[1] = "DropDown";

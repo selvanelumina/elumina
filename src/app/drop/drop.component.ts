@@ -1,16 +1,17 @@
-import { StylesCompileDependency } from '@angular/compiler';
-import {Component, OnInit, HostListener} from '@angular/core';
-import { SelectMultipleControlValueAccessor } from '@angular/forms';
+import {Component, OnInit, HostListener, Output, EventEmitter} from '@angular/core';
 import {DropEvent} from 'angular-draggable-droppable';
+import {DataModel} from '../data-model.dataModel';
+import {Global} from '../global';
+
 
 @Component({
     selector: 'app-drop',
     templateUrl: './drop.component.html',
     styleUrls: ['../form-builder-view/form-builder-view.component.css']
 })
-export class DropComponent implements OnInit {
-
-    mainData: any = [];     
+export class DropComponent implements OnInit{
+    dataModel: DataModel;
+    mainData: DataModel[] = [];     
     textbox=0;
     dropdown=0;
     temp=0;
@@ -19,11 +20,11 @@ export class DropComponent implements OnInit {
     @HostListener('mousedown', ['$event'])
     onHostClick(event: MouseEvent) {
       alert("Do not click on this region");
-      // event.preventDefault();
       event.stopPropagation();
     }
     
     constructor() {
+      
     }
 
     ngOnInit(): void {
@@ -35,7 +36,6 @@ export class DropComponent implements OnInit {
     }
 
     onPointerMain(ev: PointerEvent, desc: string) {
-        // console.log(desc, ev);
         ev.preventDefault();
         ev.stopPropagation();
         setTimeout((_: any) => {
@@ -49,12 +49,16 @@ export class DropComponent implements OnInit {
                 this.temp = this.dropdown;
 
               }
-              this.mainData.unshift({"name": this.tempData.dropData, "id": this.temp})
+              this.dataModel={"name":"", "id":0};
+              this.dataModel.name=this.tempData.dropData;
+              this.dataModel.id=this.temp;
+              Global.mainData.unshift(this.dataModel);
+              // this.mainDataEvent.emit(Global.mainData);
               this.displayTable();
           }
       });
     }
-    
+
     displayTable(){
       var perrow = 1, 
           html = "<head>";
@@ -71,23 +75,23 @@ export class DropComponent implements OnInit {
           html+="<table>";
           html+="<tr>";
 
-      for (var i=0; i<this.mainData.length; i++) {
+      for (var i=0; i<Global.mainData.length; i++) {
         html+="<table>";
-        if(this.mainData[i].name == "TextBox"){
-          html+=`<div><input style="width:100%" type="text" placeholder="${this.mainData[i].name}:${this.mainData[i].id}"></input></div>`;
+        if(Global.mainData[i].name == "TextBox"){
+          html+=`<div><input style="width:100%" type="text" placeholder="${Global.mainData[i].name}:${Global.mainData[i].id}"></input></div>`;
           var next = i+1;
-          if (next%perrow==0 && next!=this.mainData.length) {
+          if (next%perrow==0 && next!=Global.mainData.length) {
             html += "</tr><tr>";
           }
         }
-        if(this.mainData[i].name == "DropDown"){
+        if(Global.mainData[i].name == "DropDown"){
           html+='<div><select style="width:100%">';
           html+='<option>DropDown ';
-          html+= this.mainData[i].id;
+          html+= Global.mainData[i].id;
           html+= '</option>';
           html+='</select></div>';
           var next = i+1;
-          if (next%perrow==0 && next!=this.mainData.length) {
+          if (next%perrow==0 && next!=Global.mainData.length) {
             html += "</tr><tr>";
           }
         }
@@ -97,8 +101,8 @@ export class DropComponent implements OnInit {
       html+="</body>";
       document.getElementById("container").innerHTML = html;
     }
-
-    delay(ms: number) {
-      return new Promise( resolve => setTimeout(resolve, ms) );
-  }
+    
+    async delay(ms: number) {
+      await new Promise<void>(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("fired"));
+    }
 }

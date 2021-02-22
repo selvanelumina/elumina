@@ -16,6 +16,7 @@ import { DragAndDropModule } from 'angular-draggable-droppable';
 import { DropComponent } from './drop/drop.component';
 import { DragComponent } from './drag/drag.component';
 import { PreviewComponent } from './preview/preview.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { PreviewComponent } from './preview/preview.component';
     FormBuilderViewComponent,
     DropComponent,
     DragComponent,
-    PreviewComponent
+    PreviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,8 @@ import { PreviewComponent } from './preview/preview.component';
     PreviewModule,
     BrowserAnimationsModule,
     AngularDraggableModule,
-    DragAndDropModule
+    DragAndDropModule,
+    HttpClientModule,
   ],
   providers: [],
 
@@ -47,7 +49,9 @@ import { PreviewComponent } from './preview/preview.component';
     FormRendererModule,
     PreviewModule,
     BrowserAnimationsModule,
-    DragAndDropModule
+    DragAndDropModule,
+    DropComponent,
+    HttpClientModule
   ],
   // bootstrap: [AppComponent]
   bootstrap: [FormBuilderViewComponent]

@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { DataModel } from '../data-model.dataModel';
+import { Global } from '../global';
 
 @Component({
   selector: 'app-preview',
@@ -6,8 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./preview.component.css']
 })
 export class PreviewComponent implements OnInit {
-
-  constructor() { }
+  dataModel: DataModel;
+  mainDataLocal: DataModel[] = [];
+  //() mainDataLocal: DataModel[];
+  
+  
+  constructor(
+  ) { 
+;   this.mainDataLocal = Global.mainData;
+  }
 
   ngOnInit(): void {
   }
